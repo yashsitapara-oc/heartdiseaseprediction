@@ -3,15 +3,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
-import pickle
+import joblib 
 import os
 import mlflow
 
-# Path where DKube mounts the model output
-MODEL_DIR = "/model/"
-
-# Load dataset
-df_clean = pd.read_csv("./dataset/cleaned_heart_dataset.csv")
+# Load dataset (Ensure the path is correct for your DKube mount)
+df_clean = pd.read_csv("/dataset/cleaned_heart_dataset.csv")
 
 # Prepare features + target
 df_clean['target'] = (df_clean['num'] > 0).astype(int)
@@ -31,13 +28,13 @@ X_test = scaler.transform(X_test)
 rf_model = RandomForestClassifier(n_estimators=100, max_depth=20, random_state=42)
 rf_model.fit(X_train, y_train)
 
-# Evaluate and Log with MLflow for DKube tracking
-y_pred = rf_model.predict(X_test)
-accuracy = accuracy_score(y_test, y_pred)
+# Evaluate and Log
+accuracy = accuracy_score(y_test, rf_model.predict(X_test))
 print(f"Testing accuracy: {accuracy}")
 mlflow.log_metric("accuracy", accuracy)
 
-# Save artifacts to the /model directory
-pickle.dump(rf_model, open(os.path.join(MODEL_DIR, "model.pkl"), "wb"))
-pickle.dump(scaler, open(os.path.join(MODEL_DIR, "scaler.pkl"), "wb"))
-print("Model + scaler saved for deployment.")
+# Save artifacts using joblib
+joblib.dump(rf_model, os.path.join(MODEL_DIR, "/model/model.joblib"))
+joblib.dump(scaler, os.path.join(MODEL_DIR, "/model/scaler.joblib"))
+
+print("Model + scaler saved successfully.")
