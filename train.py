@@ -34,7 +34,7 @@ print(f"Testing accuracy: {accuracy}")
 mlflow.log_metric("accuracy", accuracy)
 
 # Save artifacts using joblib
-joblib.dump(rf_model, os.path.join(MODEL_DIR, "/model/model.joblib"))
-joblib.dump(scaler, os.path.join(MODEL_DIR, "/model/scaler.joblib"))
+joblib.dump(rf_model, "/model/model.joblib")
+joblib.dump(scaler, "/model/scaler.joblib")
 
 print("Model + scaler saved successfully.")
