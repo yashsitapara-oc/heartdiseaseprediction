@@ -95,7 +95,8 @@ class TransformPipeline(kfserving.KFModel):
         # drop_cols = [c for c in ["num", "target"] if c in df.columns]
         # X = df.drop(columns=drop_cols)
         # Fit and scale using same approach as train.py
-        X_scaled = self.scaler.fit_transform(df)
+        scaler = StandardScaler()
+        X_scaled = scaler.fit_transform(df)
 
         return X_scaled, df
 
