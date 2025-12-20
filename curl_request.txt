@@ -1,0 +1,19 @@
+curl -k --location --request POST https://18.191.162.154:32222/dkube/inference/ocdkube9/f67c812c2a:predict \
+--header "Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6Ijc0YmNkZjBmZWJmNDRiOGRhZGQxZWIyOGM2MjhkYWYxIn0.eyJ1c2VybmFtZSI6Im9jZGt1YmU5Iiwicm9sZSI6ImRhdGFzY2llbnRpc3QsbWxlLHBlIiwiZGVwbG95Ijp0cnVlLCJleHAiOjUwMDUyNTk2NTgsImlhdCI6MTc2NTI1OTY1OCwiaXNzIjoiRGt1YmUifQ.kjJuTCzH2PgnGW9EmOfOmibwwcwUj7hd9AX38eYI28RU5Tt1HopHoytRCNUMN8l_qgKlOAMNnk2Xr2DnWXSzTsNGSkOFimmsfsWq_yKfKaG-hTBXPgVzUI3RTNjYkHHDCZVAchibh4omTbMVWiW5T9OdyrU8DrYke5Vc0bkLGejMmg4E44pBqRVVZVW-0mT7kZWclOjJsFRYPPaSa0arPn1aRJ65T5zdv3tDVEcOatxqGQmYtFH2M3y6yEUsreVAVrHZv1H2qElpRnT8KO-MXTnqYUpmdt_CGuG7I-oyoteyiG-cC_33ExrqkQKf87lTxRQRe-SY5vv7-zZAEaTghA" \
+--header "Content-Type: application/json" \
+--data-raw '{
+  "instances": [
+    [41.0, 0.0, 0.0, 1.0, 130.0, 204.0, 0.0, 0.0, 172.0, 0.0, 1.4, 3.0, 0.0, 2.0]
+  ]
+}'
+
+
+
+curl -k --location --request POST https://18.191.162.154:32222/dkube/inference/ocdkube9/f67c812c2a:predict \
+--header "Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6Ijc0YmNkZjBmZWJmNDRiOGRhZGQxZWIyOGM2MjhkYWYxIn0.eyJ1c2VybmFtZSI6Im9jZGt1YmU5Iiwicm9sZSI6ImRhdGFzY2llbnRpc3QsbWxlLHBlIiwiZGVwbG95Ijp0cnVlLCJleHAiOjUwMDUyNTk2NTgsImlhdCI6MTc2NTI1OTY1OCwiaXNzIjoiRGt1YmUifQ.kjJuTCzH2PgnGW9EmOfOmibwwcwUj7hd9AX38eYI28RU5Tt1HopHoytRCNUMN8l_qgKlOAMNnk2Xr2DnWXSzTsNGSkOFimmsfsWq_yKfKaG-hTBXPgVzUI3RTNjYkHHDCZVAchibh4omTbMVWiW5T9OdyrU8DrYke5Vc0bkLGejMmg4E44pBqRVVZVW-0mT7kZWclOjJsFRYPPaSa0arPn1aRJ65T5zdv3tDVEcOatxqGQmYtFH2M3y6yEUsreVAVrHZv1H2qElpRnT8KO-MXTnqYUpmdt_CGuG7I-oyoteyiG-cC_33ExrqkQKf87lTxRQRe-SY5vv7-zZAEaTghA" \
+--header "Content-Type: application/json" \
+--data-raw '{
+  "instances": [
+    [63.0, 1.0, 0.0, 3.0, 145.0, 233.0, 1.0, 0.0, 150.0, 0.0, 2.3, 0.0, 0.0, 0.0]
+  ]
+}'
