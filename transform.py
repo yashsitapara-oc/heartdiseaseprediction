@@ -132,10 +132,6 @@ if __name__ == "__main__":
 
     # print("Transform step completed.")
 
-    import argparse
-    parser = argparse.ArgumentParser(parents=[kfserving.kfserver.parser])
-    args, _ = parser.parse_known_args()
-    
-    transformer = TransformPipeline(predictor_host=args.predictor_host)
+    transformer = TransformPipeline(args.model_name, predictor_host=args.predictor_host)
     kfserver = kfserving.KFServer()
     kfserver.start(models=[transformer])
