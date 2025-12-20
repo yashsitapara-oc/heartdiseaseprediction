@@ -54,14 +54,31 @@ import os
 import pandas as pd
 from io import StringIO
 
+DEFAULT_MODEL_NAME = "model"
+
+parser = argparse.ArgumentParser(parents=[kfserving.kfserver.parser])
+parser.add_argument(
+    "--model_name",
+    default=DEFAULT_MODEL_NAME,
+    help="The name that the model is served under.",
+)
+parser.add_argument(
+    "--predictor_host", help="The URL for the model predict function", required=True
+)
+
+args, _ = parser.parse_known_args()
+
 class TransformPipeline(kfserving.KFModel):
 
-    def __init__(self):
-        """
-        Initialize pipeline + load model and scaler placeholder.
-        """
+    def __init__(self, name: str, predictor_host: str):
+        super().__init__(name)
+        self.predictor_host = predictor_host
+        dirpath = os.path.dirname(os.path.realpath(__file__))
+        # self.encoders = pickle.load( open( dirpath + "/encoders.pkl", "rb" ) )
+
+    # def __init__(self):
         # self.model = joblib.load(model_path)
-        self.scaler = StandardScaler()
+        # self.scaler = StandardScaler()
 
     def preprocess(self, df):
         """
